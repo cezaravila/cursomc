@@ -12,6 +12,7 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.aplicacao.cursomc.domain.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /* Aula 27. Essa classe vai ser do tipo abstract para garantir que eu não instancia 
    pagamentos */
@@ -38,6 +39,7 @@ public abstract class Pagamento implements Serializable {
 	   qual é o campo que está mapeando o pedido. 
 	   Para garantir que o "Id" desse pagamento seja o mesmo "Id"
 	   do "Pedido" uso o anotation "@MapsId"*/
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name = "pedido_id")
 	@MapsId
