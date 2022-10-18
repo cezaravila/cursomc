@@ -10,13 +10,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-
 import com.aplicacao.cursomc.domain.Categoria;
 import com.aplicacao.cursomc.dto.CategoriaDTO;
 import com.aplicacao.cursomc.repositories.CategoriaRepository;
-
-import com.aplicacao.cursomc.services.exceptions.ObjectNotFoundException;
 import com.aplicacao.cursomc.services.exceptions.DataIntegrityException;
+import com.aplicacao.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
@@ -36,6 +34,8 @@ public class CategoriaService {
 	}
 
 	public Categoria update(Categoria obj) {
+		Categoria newObj = find(obj.getId());
+		updateData(newObj, obj);
 		find(obj.getId());
 		return repo.save(obj);
 	}
@@ -61,5 +61,9 @@ public class CategoriaService {
 	
 	public Categoria fromDTO(CategoriaDTO objDto) {
 		return new Categoria(objDto.getId(), objDto.getNome());
+	}
+	
+	private void updateData(Categoria newObj, Categoria obj) {
+		newObj.setNome(obj.getNome());
 	}
 }
