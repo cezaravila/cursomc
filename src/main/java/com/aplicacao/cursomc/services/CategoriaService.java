@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.aplicacao.cursomc.domain.Categoria;
+import com.aplicacao.cursomc.dto.CategoriaDTO;
 import com.aplicacao.cursomc.repositories.CategoriaRepository;
 
 import com.aplicacao.cursomc.services.exceptions.ObjectNotFoundException;
@@ -58,4 +59,8 @@ public class CategoriaService {
 				orderBy);
 		return repo.findAll(pageRequest);
 	}		
+	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
+	}
 }
