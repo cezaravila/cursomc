@@ -3,12 +3,15 @@ package com.aplicacao.cursomc.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+
 
 import com.aplicacao.cursomc.domain.Categoria;
 import com.aplicacao.cursomc.repositories.CategoriaRepository;
 
 import com.aplicacao.cursomc.services.exceptions.ObjectNotFoundException;
+import com.aplicacao.cursomc.services.exceptions.DataIntegrityException;
 
 @Service
 public class CategoriaService {
@@ -22,15 +25,31 @@ public class CategoriaService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 
-	/* 34. Inserindo uma nova Categoria com Post*/
+	/* 34. Inserindo uma nova Categoria com Post */
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
 		return repo.save(obj);
 	}
-	
+
 	public Categoria update(Categoria obj) {
 		find(obj.getId());
 		return repo.save(obj);
 	}
+
+	public void delete(Integer id) {
+		find(id);
+		try {
+			repo.deleteById(id);
+			  // ConstraintViolationException
+			  // DataIntegrityViolationException
+			 //  DataIntegrityViolationException 
+		} catch (DataIntegrityViolationException e) {
+			System.out.println(e.getMessage());
+			throw new DataIntegrityException("Não é possével excluir uma categoria que possui produtos.");
+			
+		}
+	}
+
 	
+
 }
