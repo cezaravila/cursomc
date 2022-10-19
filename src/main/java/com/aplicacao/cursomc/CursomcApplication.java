@@ -24,7 +24,7 @@ import com.aplicacao.cursomc.domain.enums.TipoCliente;
 import com.aplicacao.cursomc.repositories.CategoriaRepository;
 import com.aplicacao.cursomc.repositories.CidadeRepository;
 import com.aplicacao.cursomc.repositories.ClienteRepository;
-import com.aplicacao.cursomc.repositories.EnderecoRepositories;
+import com.aplicacao.cursomc.repositories.EnderecoRepository;
 import com.aplicacao.cursomc.repositories.EstadoRepository;
 import com.aplicacao.cursomc.repositories.ItemPedidoRepository;
 import com.aplicacao.cursomc.repositories.PagamentoRepository;
@@ -45,7 +45,7 @@ public class CursomcApplication implements CommandLineRunner {
 	@Autowired
 	private ClienteRepository clienteRepository;
 	@Autowired
-	private EnderecoRepositories enderecoRepositories;
+	private EnderecoRepository enderecoRepositories;
 	@Autowired
 	private PedidoRepository pedidoRepository;
 	@Autowired 

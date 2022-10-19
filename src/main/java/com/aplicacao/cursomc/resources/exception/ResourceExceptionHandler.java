@@ -1,7 +1,5 @@
 package com.aplicacao.cursomc.resources.exception;
 
-import java.util.Iterator;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
@@ -11,8 +9,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.aplicacao.cursomc.services.exceptions.ObjectNotFoundException;
 import com.aplicacao.cursomc.services.exceptions.DataIntegrityException;
+import com.aplicacao.cursomc.services.exceptions.ObjectNotFoundException;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {

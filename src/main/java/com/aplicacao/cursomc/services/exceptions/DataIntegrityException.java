@@ -1,6 +1,5 @@
 package com.aplicacao.cursomc.services.exceptions;
 
-//@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class DataIntegrityException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	
